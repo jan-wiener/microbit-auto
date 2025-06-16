@@ -52,7 +52,7 @@ function turnFunc() {
 let pinInfo = {c:0, l:0, r:0}
 basic.forever(function() {
     pinInfo = { c: pins.digitalReadPin(IR.c), l: pins.digitalReadPin(IR.l), r:pins.digitalReadPin(IR.r)}
-    if ((pinInfo.c || pinInfo.r || pinInfo.l) && turn != "C") {
+    if (((pinInfo.c + pinInfo.r + pinInfo.l) > 2) && turn != "C") {
         turnFunc()
     } else {
         if (pinInfo.c && !pinInfo.l && !pinInfo.r) {
